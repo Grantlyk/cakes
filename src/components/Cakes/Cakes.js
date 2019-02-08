@@ -34,22 +34,24 @@ class Cakes extends Component {
 
   render() {
     return (
-      this.state.cakes &&
-      this.state.cakes.map(cake => (
-        <Card key={cake.id} raised style={{ margin: '10px' }}>
-          <ButtonBase
-            style={{ padding: '10px' }}
-            onClick={() => {
-              this.context.router.history.push(`/cake/${cake.id}`);
-            }}
-          >
-            <span>{cake.name}</span>
-            <br />
-            <span>{cake.imageUrl}</span>
-            <br />
-          </ButtonBase>
-        </Card>
-      ))
+      <div style={{ marginTop: '80px' }}>
+        {this.state.cakes &&
+          this.state.cakes.map(cake => (
+            <Card key={cake.id} raised style={{ margin: '10px' }}>
+              <ButtonBase
+                style={{ padding: '10px' }}
+                onClick={() => {
+                  this.context.router.history.push(`/cake/${cake.id}`);
+                }}
+              >
+                <span>{cake.name}</span>
+                <br />
+                <span>{cake.imageUrl}</span>
+                <br />
+              </ButtonBase>
+            </Card>
+          ))}
+      </div>
     );
   }
 }

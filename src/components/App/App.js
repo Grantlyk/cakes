@@ -15,15 +15,25 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/new">New</Link>
-            </li>
-          </ul>
-          <hr />
+          <div
+            style={{
+              position: 'fixed',
+              width: '100%',
+              backgroundColor: '#fff',
+              top: '0',
+              zIndex: '10',
+            }}
+          >
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/new">New</Link>
+              </li>
+            </ul>
+            <hr style={{ margin: '0' }} />
+          </div>
 
           <Route exact path="/" component={Cakes} />
           <Route exact path="/cake/:id" component={Cake} />

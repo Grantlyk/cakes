@@ -24,7 +24,7 @@ class Cakes extends Component {
   render() {
     const cake = this.state.cake;
     return (
-      <div key={cake.id} style={{ padding: '10px' }}>
+      <div key={cake.id} style={{ padding: '10px', marginTop: '80px' }}>
         <span>{cake.name}</span>
         <br />
         <span>{cake.imageUrl}</span>

@@ -69,7 +69,7 @@ class Cakes extends Component {
 
   render() {
     return (
-      <form noValidate autoComplete="off" style={{ padding: '40px' }}>
+      <form noValidate autoComplete="off" style={{ padding: '70px' }}>
         <h1>Create a new Cake</h1>
         <TextField
           label="Name"
