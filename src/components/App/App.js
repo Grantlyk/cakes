@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Cakes from '../Cakes';
 import Cake from '../Cake';
+import New from '../New';
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends Component {
 
           <Route exact path="/" component={Cakes} />
           <Route exact path="/cake/:id" component={Cake} />
-          <Route exact path="/new" />
+          <Route exact path="/new" component={New} />
         </div>
       </Router>
     );
