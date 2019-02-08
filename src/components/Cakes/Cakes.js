@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 class Cakes extends Component {
@@ -37,7 +38,19 @@ class Cakes extends Component {
       <div style={{ marginTop: '80px' }}>
         {this.state.cakes &&
           this.state.cakes.map(cake => (
-            <Card key={cake.id} raised style={{ margin: '10px' }}>
+            <Card
+              key={cake.id}
+              raised
+              style={{ margin: '10px', display: 'flex' }}
+            >
+              <img
+                src={cake.imageUrl}
+                alt={cake.name}
+                style={{
+                  maxWidth: '100px',
+                  maxHeight: '100px',
+                }}
+              />
               <ButtonBase
                 style={{ padding: '10px' }}
                 onClick={() => {
@@ -45,8 +58,6 @@ class Cakes extends Component {
                 }}
               >
                 <span>{cake.name}</span>
-                <br />
-                <span>{cake.imageUrl}</span>
                 <br />
               </ButtonBase>
             </Card>

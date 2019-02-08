@@ -27,9 +27,9 @@ class Cakes extends Component {
       name: '',
       comment: '',
       yumFactor: '',
-      // I added a default imageUrl, the document didn't say it was necessary
+      // I added an imageUrl input, the document didn't say it was necessary
       // but I think it is as the API returns an error when one isn't present
-      imageUrl: 'https://someRandomCakeImg.com/img/img.jpeg',
+      imageUrl: '',
       errors: [],
     };
 

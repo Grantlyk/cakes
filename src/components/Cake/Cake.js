@@ -18,6 +18,7 @@ class Cakes extends Component {
       }`,
     );
     const cake = await response.json();
+    console.log('cake: ', cake);
     this.setState({ cake });
   }
 
@@ -32,6 +33,16 @@ class Cakes extends Component {
         <span>{cake.yumFactor}</span>
         <br />
         <span>{cake.comment}</span>
+        <br />
+        <img
+          src={cake.imageUrl}
+          alt={cake.name}
+          style={{
+            maxWidth: '300px',
+            maxHeight: '300px',
+            margin: '40px',
+          }}
+        />
       </div>
     );
   }
