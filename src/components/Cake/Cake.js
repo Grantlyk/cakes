@@ -18,7 +18,7 @@ class Cakes extends Component {
       }`,
     );
     const cake = await response.json();
-    console.log('cake: ', cake);
+
     this.setState({ cake });
   }
 
