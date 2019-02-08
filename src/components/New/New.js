@@ -30,6 +30,7 @@ class Cakes extends Component {
       // I added a default imageUrl, the document didn't say it was necessary
       // but I think it is as the API returns an error when one isn't present
       imageUrl: 'https://someRandomCakeImg.com/img/img.jpeg',
+      errors: [],
     };
 
     this.createCake = this.createCake.bind(this);
@@ -43,6 +44,8 @@ class Cakes extends Component {
 
   async createCake(event) {
     event.preventDefault();
+    this.setState({ errors: [] });
+
     const response = await fetch(
       'http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes',
       {
@@ -52,23 +55,22 @@ class Cakes extends Component {
         body: JSON.stringify(this.state),
       },
     );
-    console.log(
-      'create cake!: ',
-      this.state,
-      response,
-      JSON.stringify(this.state),
-    );
 
     if (response.ok) {
       this.context.router.history.push('/');
+    } else {
+      const message = await response.json();
+      // A Polyfill should be added for IE
+      // as Object.values isn't supported in IE
+      const errors = Object.values(message).flat();
+      this.setState({ errors });
     }
-
-    // const message = response.json();
   }
 
   render() {
     return (
-      <form noValidate autoComplete="off">
+      <form noValidate autoComplete="off" style={{ padding: '40px' }}>
+        <h1>Create a new Cake</h1>
         <TextField
           label="Name"
           value={this.state.name}
@@ -91,7 +93,7 @@ class Cakes extends Component {
           variant="outlined"
         />
         <br />
-        <FormControl variant="filled" style={{ margin: '10px' }}>
+        <FormControl variant="filled" style={{ margin: '15px 0 15px' }}>
           <InputLabel>Yum</InputLabel>
           <Select
             value={this.state.yumFactor}
@@ -106,9 +108,21 @@ class Cakes extends Component {
           </Select>
         </FormControl>
         <br />
-        <Button variant="contained" onClick={this.createCake}>
+        <Button
+          style={{ float: 'right' }}
+          variant="contained"
+          onClick={this.createCake}
+        >
           Submit
         </Button>
+        <br />
+        {this.state.errors &&
+          this.state.errors.map((error, i) => (
+            <div key={i} style={{ margin: '10px' }}>
+              <span style={{ color: 'red' }}>{error}</span>
+              <br />
+            </div>
+          ))}
       </form>
     );
   }

@@ -36,8 +36,9 @@ class Cakes extends Component {
     return (
       this.state.cakes &&
       this.state.cakes.map(cake => (
-        <Card key={cake.id} raised>
+        <Card key={cake.id} raised style={{ margin: '10px' }}>
           <ButtonBase
+            style={{ padding: '10px' }}
             onClick={() => {
               this.context.router.history.push(`/cake/${cake.id}`);
             }}
